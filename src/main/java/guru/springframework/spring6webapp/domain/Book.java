@@ -1,6 +1,7 @@
 package guru.springframework.spring6webapp.domain;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,7 +25,7 @@ public class Book {
 
 	private String isbm;
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "author_book",
 		joinColumns = @JoinColumn(name = "book_id"),
 		inverseJoinColumns = @JoinColumn(name = "author_id"))
